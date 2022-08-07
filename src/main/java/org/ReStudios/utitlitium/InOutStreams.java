@@ -5,6 +5,8 @@ import org.jetbrains.annotations.NotNull;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.ArrayList;
+
 @SuppressWarnings("unused")
 public class InOutStreams {
     OutputStream os;
@@ -39,6 +41,10 @@ public class InOutStreams {
         this.is = is;
     }
 
+    public void write(String str) throws IOException {
+        byte[] bytes = str.getBytes();
+        write(bytes, 0, bytes.length);
+    }
     public void write(int b) throws IOException {
         os.write(b);
     }
@@ -55,8 +61,8 @@ public class InOutStreams {
         os.flush();
     }
 
-    public int read() throws IOException {
-        return getIs().read();
+    public byte read() throws IOException {
+        return (byte) getIs().read();
     }
 
     public int read(byte @NotNull [] b) throws IOException {

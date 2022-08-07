@@ -2,9 +2,6 @@ package org.ReStudios.utitlitium;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.REStudios.utils.oop.REPrintStream;
-import ru.REStudios.utils.oop.REUtils;
-
 import java.io.PrintStream;
 @SuppressWarnings("unused")
 public class Logger extends PrintStream implements Thread.UncaughtExceptionHandler {
@@ -17,7 +14,7 @@ public class Logger extends PrintStream implements Thread.UncaughtExceptionHandl
         this.original = stream;
     }
     public void print(@Nullable String s) {
-        StackTraceElement el = REUtils.getCaller(2 + this.add);
+        StackTraceElement el = Utilitium.getCaller(2 + this.add);
         String var10000 = el.getClassName();
         String clazz = var10000 + ":" + el.getLineNumber();
         this.original.printf("[%s %s %s] %s", Thread.currentThread().getName(), this.isErrorStream ? "ERROR" : "INFO", clazz, s);
@@ -72,8 +69,8 @@ public class Logger extends PrintStream implements Thread.UncaughtExceptionHandl
     }
 
     public static void setupPrints() {
-        System.setOut(new REPrintStream(System.out));
-        REPrintStream stream = new REPrintStream(System.err);
+        System.setOut(new Logger(System.out));
+        Logger stream = new Logger(System.err);
         stream.isErrorStream = true;
         System.setErr(stream);
         Thread.currentThread().setUncaughtExceptionHandler(stream);
