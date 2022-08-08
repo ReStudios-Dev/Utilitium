@@ -47,8 +47,7 @@ public class ArrayUtils {
     }
 
     public static <T> T getLastItem(T[] s) {
-        ArrayList<T> list = toArrayList(s);
-        return list.get(list.size() - 1);
+        return s[s.length - 1];
     }
 
     enum ComparingMode {
