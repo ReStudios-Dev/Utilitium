@@ -27,8 +27,9 @@ public class BetterArguments {
         }
         arguments.put(key.substring(1), String.join(" ", values));
     }
-    public void putDefault(String key, String value) {
+    public BetterArguments putDefault(String key, String value) {
         defaultArguments.put(key, value);
+        return this;
     }
 
     public String removeDefault(String key) {
@@ -72,16 +73,11 @@ public class BetterArguments {
         return getIntegerOr(key, -1);
     }
     public int getIntegerOr(String key, int i){
-        return contains(key) ? parseOr(getString(key), 0) : containsDefault(key) ? parseOr(getDefault(key), 0) : i;
+        return contains(key) ? StringUtils.parseInteger(getString(key), 0) :
+                                containsDefault(key) ? StringUtils.parseInteger(getDefault(key), 0) : i;
     }
     @SuppressWarnings("all")
-    private int parseOr(String str, int i){
-        try{
-            return Integer.parseInt(str);
-        }catch (NumberFormatException ignored){
-            return i;
-        }
-    }
+
     @Override
     public String toString() {
         String output = "{";

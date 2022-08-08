@@ -14,6 +14,30 @@ public class MathUtils {
     }
 
     /**
+     * Clamp
+     * @param min min integer
+     * @param max max integer
+     * @param val current integer
+     * @return value between min & max
+     */
+    public static float clamp(float min, float max, float val){
+        return Math.max(min, Math.min(val, max));
+    }
+
+    /**
+     * Clamp
+     * @param min min integer
+     * @param max max integer
+     * @param val current integer
+     * @return value between min & max
+     */
+    public static double clamp(double min, double max, double val){
+        return Math.max(min, Math.min(val, max));
+    }
+    
+   
+
+    /**
      * Cast int in range to some range (from <a href="https://www.arduino.cc/reference/en/language/functions/math/map">arduino</a>)
      * @param x current value
      * @param in_min input min

@@ -24,6 +24,12 @@ public class TrayUtils {
             throw new RuntimeException(e);
         }
     }
+
+    public TrayUtils(String title, Image icon){
+        this(title);
+        setIcon(icon);
+    }
+
     public void notification(String title, String message, TrayIcon.MessageType msgType){
         trayIcon.displayMessage(title, message, msgType);
     }

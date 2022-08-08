@@ -27,7 +27,7 @@ public abstract class Command {
 
     public Command addSubCommand(Command command){
         if (command.alias == null || command.alias.isEmpty() || command.alias.equalsIgnoreCase(" ")){
-            throw new IllegalArgumentException("Command's alias is null. It is root command. Please, provide alias to this command.");
+            throw new IllegalArgumentException("Adding root command to root command");
         }
         subCommands.put(command.alias,command);
         command.isSub = true;

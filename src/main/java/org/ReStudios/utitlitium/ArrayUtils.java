@@ -6,12 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 @SuppressWarnings("unused")
 public class ArrayUtils {
-    public static List<?> remove(List<?> list, ArrayIndex index){
-        return switch (index) {
-            case last -> list.subList(0, list.size() - 2);
-            case first -> list.subList(1, list.size() - 1);
-        };
-    }
+
     public static HashMap<String, String> createMap(String... values){
         HashMap<String, String> returnValue = new HashMap<>();
         if(values.length > 0 && values.length % 2 == 0)
@@ -22,17 +17,17 @@ public class ArrayUtils {
     public static <T> ArrayList<T> toArrayList(T... values){
         return new ArrayList<>(Arrays.asList(values));
     }
-    public static <T> List<T> removeSame(List<T> list, RemoveSameWay way){
+    public static <T> List<T> removeSame(List<T> list, ComparingMode way){
         list.removeIf(t -> {
             int count = 0;
             for (T t1 : list) {
-                if(way == RemoveSameWay.byEquals){
+                if(way == ComparingMode.EQUALITY){
                     if (t1.equals(t))count++;
                 }
-                if(way == RemoveSameWay.byClass){
+                if(way == ComparingMode.CLASS){
                     if(t1.getClass().isAssignableFrom(t.getClass()))count++;
                 }
-                if(way == RemoveSameWay.byClassHashCode){
+                if(way == ComparingMode.HASH_CODE){
                     if(t1.hashCode() == t.hashCode())count++;
                 }
             }
@@ -50,22 +45,13 @@ public class ArrayUtils {
             ++start;
         }
     }
-    @SafeVarargs
-    public static <T> T getLastItem(T... list){
-        return getAt(toArrayList(list), ArrayIndex.last);
+
+    public static <T> T getLastItem(T[] s) {
+        ArrayList<T> list = toArrayList(s);
+        return list.get(list.size() - 1);
     }
-    public static <T> T getAt(List<T> list, ArrayIndex get){
-        if(get == ArrayIndex.last){
-            return list.get(list.size()-1);
-        }else if(get == ArrayIndex.first){
-            return list.get(0);
-        }
-        return list.get(0);
-    }
-    enum ArrayIndex {
-        last, first
-    }
-    enum RemoveSameWay {
-        byEquals, byClass, byClassHashCode
+
+    enum ComparingMode {
+        EQUALITY, CLASS, HASH_CODE
     }
 }

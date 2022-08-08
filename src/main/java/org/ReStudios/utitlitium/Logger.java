@@ -1,7 +1,6 @@
 package org.ReStudios.utitlitium;
 
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
 import java.io.PrintStream;
 @SuppressWarnings("unused")
 public class Logger extends PrintStream implements Thread.UncaughtExceptionHandler {
@@ -13,7 +12,7 @@ public class Logger extends PrintStream implements Thread.UncaughtExceptionHandl
         super(stream);
         this.original = stream;
     }
-    public void print(@Nullable String s) {
+    public void print(String s) {
         StackTraceElement el = Utilitium.getCaller(2 + this.add);
         String var10000 = el.getClassName();
         String clazz = var10000 + ":" + el.getLineNumber();
@@ -56,13 +55,13 @@ public class Logger extends PrintStream implements Thread.UncaughtExceptionHandl
         this.add = 0;
     }
 
-    public void print(@Nullable Object obj) {
+    public void print(Object obj) {
         this.add = 1;
         this.print(String.valueOf(obj));
         this.add = 0;
     }
 
-    public void print(char @NotNull [] s) {
+    public void print(char [] s) {
         this.add = 1;
         this.print(String.valueOf(s));
         this.add = 0;
