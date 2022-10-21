@@ -8,6 +8,15 @@ public class BetterArguments {
 
     private final HashMap<String, String> arguments;
     private final HashMap<String, String> defaultArguments;
+
+    /**
+     * Example:
+     *  public static void main(String[] args){
+     *      BetterArguments ba = new BetterArguments(args);
+     *      ...
+     *  }
+     * @param args main method arguments
+     */
     private BetterArguments(String[] args) {
         arguments = new HashMap<>();
         defaultArguments = new HashMap<>();

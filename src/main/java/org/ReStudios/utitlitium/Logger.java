@@ -1,5 +1,6 @@
 package org.ReStudios.utitlitium;
 
+import org.jetbrains.annotations.NotNull;
 
 import java.io.PrintStream;
 @SuppressWarnings("unused")
@@ -61,7 +62,7 @@ public class Logger extends PrintStream implements Thread.UncaughtExceptionHandl
         this.add = 0;
     }
 
-    public void print(char [] s) {
+    public void print(char @NotNull [] s) {
         this.add = 1;
         this.print(String.valueOf(s));
         this.add = 0;

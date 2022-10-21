@@ -5,7 +5,11 @@ import java.security.NoSuchAlgorithmException;
 @SuppressWarnings("unused")
 public class StringUtils {
 
-    // Number parsing
+    /**
+     * Safe integer parse
+     * @param s String that contains integer
+     * @return Parsed integer from string, or 0
+     */
     public static int parseInteger(String s) {
         try {
             return Integer.parseInt(s);
@@ -13,6 +17,12 @@ public class StringUtils {
             return 0;
         }
     }
+
+    /**
+     * Safe double parse
+     * @param s String that contains double value
+     * @return Parsed double from string, or 0.0d
+     */
     public static double parseDouble(String s) {
         try {
             return Double.parseDouble(s);
@@ -21,6 +31,11 @@ public class StringUtils {
         }
     }
 
+    /**
+     * Safe float parse
+     * @param s String that contains float value
+     * @return Parsed float from string, or 0
+     */
     public static float parseFloat(String s) {
         try {
             return Float.parseFloat(s);
@@ -29,6 +44,12 @@ public class StringUtils {
         }
     }
 
+    /**
+     * Safe integer parse with default value
+     * @param s String that contains integer
+     * @param defaultValue Default value if string contains invalid integer
+     * @return Parsed integer from string, or defaultValue value
+     */
     public static int parseInteger(String s, int defaultValue) {
         try {
             return Integer.parseInt(s);
@@ -36,6 +57,13 @@ public class StringUtils {
             return defaultValue;
         }
     }
+
+    /**
+     * Safe double parse with default value
+     * @param s String that contains double
+     * @param defaultValue Default value if string contains invalid double value
+     * @return Parsed double from string, or defaultValue value
+     */
     public static double parseDouble(String s, double defaultValue) {
         try {
             return Double.parseDouble(s);
@@ -44,6 +72,12 @@ public class StringUtils {
         }
     }
 
+    /**
+     * Safe float parse with default value
+     * @param s String that contains float value
+     * @param defaultValue Default value if string contains invalid float
+     * @return Parsed float from string, or defaultValue value
+     */
     public static float parseFloat(String s, float defaultValue) {
         try {
             return Float.parseFloat(s);
@@ -55,7 +89,7 @@ public class StringUtils {
 
     /**
      * Reverses provided string
-     * @param s to be reversed
+     * @param s String to be reversed
      * @return reversed string
      */
     public static String reverse(String s) {
@@ -113,6 +147,12 @@ public class StringUtils {
         }
         return sb.toString();
     }
+
+    /**
+     * Set string's first char to upper case
+     * @param s String
+     * @return String, but first character is upper case
+     */
     public static String firstCharUp(String s) {
         return characterUp(0, s);
     }
