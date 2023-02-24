@@ -95,27 +95,13 @@ public class DataChannel implements Closeable, Flushable {
      */
     public int read(byte[] b, int off, int len) throws IOException { return getInputStream().read(b, off, len); }
 
-    /**
-     * Reads all bytes from stream
-     * @return stream content
-     * @throws IOException if an I/O error occurs
-     */
-    public byte[] readAllBytes() throws IOException { return getInputStream().readAllBytes(); }
 
-    /**
-     * Read N bytes
-     * @param len Number of bytes
-     * @return Bytes
-     * @throws IOException if an I/O error occurs
-     */
-    public byte[] readNBytes(int len) throws IOException { return getInputStream().readNBytes(len); }
 
     /**
      * Skips over and discards n bytes of data from this input stream. The skip method may, for a variety of reasons, end up skipping over some smaller number of bytes, possibly 0. This may result from any of a number of conditions; reaching end of file before n bytes have been skipped is only one possibility. The actual number of bytes skipped is returned. If n is negative, the skip method for class InputStream always returns 0, and no bytes are skipped. Subclasses may handle the negative value differently.
      */
     public long skip(long n) throws IOException { return getInputStream().skip(n); }
 
-    public void skipNBytes(long n) throws IOException { getInputStream().skipNBytes(n); }
 
     public int availableInput() throws IOException { return getInputStream().available(); }
 

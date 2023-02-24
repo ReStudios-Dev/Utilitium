@@ -47,7 +47,7 @@ public class FileHandle extends File {
      * @throws IOException if an I/O error occurs reading from the file or a malformed or unmappable byte sequence is read
      */
     public String read() throws IOException {
-        return Files.readString(toPath());
+        return new String(Files.readAllBytes(toPath()));
     }
 
     /**

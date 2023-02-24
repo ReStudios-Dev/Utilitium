@@ -5,7 +5,6 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 
 /**
@@ -23,7 +22,7 @@ public class WarnFunctions {
     public static Byte[] getTTSAudioFile(String text, String language){
         ArrayList<Byte> bytes = new ArrayList<>();
         try {
-            URL u = new URL("http://translate.google.com/translate_tts?tl="+language+"&q="+ URLEncoder.encode(text, StandardCharsets.UTF_8) +"&client=tw-ob");
+            URL u = new URL("http://translate.google.com/translate_tts?tl="+language+"&q="+ URLEncoder.encode(text, "utf-8") +"&client=tw-ob");
             URLConnection con = u.openConnection();
             con.setDoInput(true);
             con.connect();
@@ -35,8 +34,7 @@ public class WarnFunctions {
                             }
                         }, con.getInputStream());
             dc.transfer();
-            dc.closeInput();
-            dc.closeOutput();
+            dc.close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
