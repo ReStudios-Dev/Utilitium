@@ -1,7 +1,6 @@
 package org.ReStudios.utitlitium.vectors;
 
 import org.ReStudios.utitlitium.ArrayUtils;
-import org.ReStudios.utitlitium.DeserializeException;
 import org.ReStudios.utitlitium.StringUtils;
 
 import java.nio.charset.Charset;

@@ -8,6 +8,10 @@ public class Timer {
     }
     public void run(){
         startTime = System.currentTimeMillis();
+        running = true;
+    }
+    public boolean running(){
+        return running;
     }
     public long getTime(){
         return System.currentTimeMillis() - startTime;

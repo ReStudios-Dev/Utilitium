@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="Utilitium">
-    <output-path>$PROJECT_DIR$/../ReBW/libs</output-path>
+    <output-path>$PROJECT_DIR$/out/artifacts/Utilitium</output-path>
     <root id="archive" name="Utilitium.jar">
       <element id="module-output" name="UtilitiumGit" />
       <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/jetbrains/annotations/20.1.0/annotations-20.1.0.jar" path-in-jar="/" />
