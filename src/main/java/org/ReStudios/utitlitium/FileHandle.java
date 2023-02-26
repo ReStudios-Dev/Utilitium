@@ -81,4 +81,42 @@ public class FileHandle extends File {
         }
         return ArrayUtils.getLastItem(getName().split("\\."));
     }
+
+    /**
+     * Unzip file from jar file
+     * f.e:
+     * <pre>
+     int returnCode = unzip(AppTest.class, "config.json", "config.json", false, true);
+     if(returnCode != 0){
+        // The file was not created
+     }else{
+        // The file has been created
+     }
+     </pre>
+     * @param main Main class
+     * @param injarName relative path to the file inside the archive
+     * @param outjarName absolute (or relative to the working directory) path to the file to unzip
+     * @param replaceIfExist replaces the contents of a file if the file already exists
+     * @param createIfNotExist create file if file does not exist
+     * @return 0 - success, 1 - file not created but no errors
+     * @throws IOException Read/write error
+     */
+    public static int unzip(Class<?> main, String injarName, String outjarName, boolean replaceIfExist, boolean createIfNotExist) throws IOException{
+        File out = new File(outjarName);
+        if(out.exists() && !replaceIfExist)return -1;
+        if(!out.exists() && !createIfNotExist)return -1;
+
+        if(!out.exists()){
+            Files.createFile(out.toPath());
+        }
+
+        try (InputStream is = main.getClassLoader().getResourceAsStream(injarName)) {
+            try(OutputStream os = Files.newOutputStream(out.toPath())){
+                DataChannel channel = new DataChannel(os, is);
+                channel.transfer();
+                channel.close();
+                return 0;
+            }
+        }
+    }
 }
