@@ -10,6 +10,17 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <repository-name>Utilitium</repository-name>
+        <repository-owner>Swimer-MC</repository-owner>
+        <branch-name>mvn-repo</branch-name>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/Swimer-MC/Utilitium</url>
+        </repository>
+    </distributionManagement>
 
 </project>
