@@ -20,7 +20,7 @@ public class WarnFunctions {
      * @return Bytes of audio file
      */
     public static Byte[] getTTSAudioFile(String text, String language){
-        ArrayList<Byte> bytes = new ArrayList<>();
+        final ArrayList<Byte> bytes = new ArrayList<>();
         try {
             URL u = new URL("http://translate.google.com/translate_tts?tl="+language+"&q="+ URLEncoder.encode(text, "utf-8") +"&client=tw-ob");
             URLConnection con = u.openConnection();
