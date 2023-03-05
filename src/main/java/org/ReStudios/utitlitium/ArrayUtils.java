@@ -38,7 +38,7 @@ public class ArrayUtils {
      * @return Cleared list
      * @param <T> List type
      */
-    public static <T> List<T> removeSame(List<T> list, ComparingMode way){
+    public static <T> List<T> removeSame(final List<T> list, final ComparingMode way){
         list.removeIf(new Predicate<T>() {
             @Override
             public boolean test(T t) {
