@@ -28,7 +28,7 @@ public class InstanceManager {
      * @param <T> class template
      */
     @SuppressWarnings("unchecked")
-    public static <T> T getInstance(Class<T> clazz){
+    public static <T> T getInstance(final Class<T> clazz){
         return (T) instances.stream().filter(new Predicate<Object>() {
             @Override
             public boolean test(Object o) {
