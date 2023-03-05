@@ -1,6 +1,7 @@
 package org.ReStudios.utitlitium;
 
 import java.util.*;
+import java.util.function.Predicate;
 
 @SuppressWarnings("unused")
 public class ArrayUtils {
@@ -38,20 +39,23 @@ public class ArrayUtils {
      * @param <T> List type
      */
     public static <T> List<T> removeSame(List<T> list, ComparingMode way){
-        list.removeIf(t -> {
-            int count = 0;
-            for (T t1 : list) {
-                if(way == ComparingMode.EQUALITY){
-                    if (t1.equals(t))count++;
+        list.removeIf(new Predicate<T>() {
+            @Override
+            public boolean test(T t) {
+                int count = 0;
+                for (T t1 : list) {
+                    if(way == ComparingMode.EQUALITY){
+                        if (t1.equals(t))count++;
+                    }
+                    if(way == ComparingMode.CLASS){
+                        if(t1.getClass().isAssignableFrom(t.getClass()))count++;
+                    }
+                    if(way == ComparingMode.HASH_CODE){
+                        if(t1.hashCode() == t.hashCode())count++;
+                    }
                 }
-                if(way == ComparingMode.CLASS){
-                    if(t1.getClass().isAssignableFrom(t.getClass()))count++;
-                }
-                if(way == ComparingMode.HASH_CODE){
-                    if(t1.hashCode() == t.hashCode())count++;
-                }
+                return count > 1;
             }
-            return count > 1;
         });
         return list;
     }

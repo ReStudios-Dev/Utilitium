@@ -1,6 +1,8 @@
 package org.ReStudios.utitlitium;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
+
 @SuppressWarnings("unused")
 public class InstanceManager {
     /**
@@ -27,7 +29,12 @@ public class InstanceManager {
      */
     @SuppressWarnings("unchecked")
     public static <T> T getInstance(Class<T> clazz){
-        return (T) instances.stream().filter(o -> clazz.isAssignableFrom(o.getClass())).findFirst().orElse(null);
+        return (T) instances.stream().filter(new Predicate<Object>() {
+            @Override
+            public boolean test(Object o) {
+                return clazz.isAssignableFrom(o.getClass());
+            }
+        }).findFirst().orElse(null);
     }
 
     static  {
