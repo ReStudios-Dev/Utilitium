@@ -1,7 +1,6 @@
 package org.ReStudios.utitlitium;
 
 import java.util.*;
-import java.util.function.Predicate;
 
 @SuppressWarnings("unused")
 public class ArrayUtils {
@@ -39,26 +38,46 @@ public class ArrayUtils {
      * @param <T> List type
      */
     public static <T> List<T> removeSame(final List<T> list, final ComparingMode way){
-        list.removeIf(new Predicate<T>() {
-            @Override
-            public boolean test(T t) {
-                int count = 0;
-                for (T t1 : list) {
-                    if(way == ComparingMode.EQUALITY){
-                        if (t1.equals(t))count++;
-                    }
-                    if(way == ComparingMode.CLASS){
-                        if(t1.getClass().isAssignableFrom(t.getClass()))count++;
-                    }
-                    if(way == ComparingMode.HASH_CODE){
-                        if(t1.hashCode() == t.hashCode())count++;
-                    }
+        list.removeIf(t -> {
+            int count = 0;
+            for (T t1 : list) {
+                if(way == ComparingMode.EQUALITY){
+                    if (t1.equals(t))count++;
                 }
-                return count > 1;
+                if(way == ComparingMode.CLASS){
+                    if(t1.getClass().isAssignableFrom(t.getClass()))count++;
+                }
+                if(way == ComparingMode.HASH_CODE){
+                    if(t1.hashCode() == t.hashCode())count++;
+                }
             }
+            return count > 1;
         });
         return list;
     }
+
+    /**
+     * Get random item from list
+     * @param list list
+     * @return random item from list. null if list is empty
+     * @param <T> type
+     */
+    public static <T> T getRandom(T[] list){
+        return getRandom(Arrays.asList(list));
+    }
+
+    /**
+     * Get random item from list
+     * @param list list
+     * @return random item from list. null if list is empty
+     * @param <T> type
+     */
+    public static <T> T getRandom(List<T> list){
+        if(list.size() == 0)return null;
+        Random random = new Random();
+        return list.get(random.nextInt(list.size()));
+    }
+
 
     /**
      * Reverse list

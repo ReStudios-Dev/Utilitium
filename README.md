@@ -26,6 +26,18 @@ All the methods return an instance of vector class to allow method chaining.
 ## ArrayUtils
 The `ArrayUtils` class provides a set of utility methods for working with arrays, collections, and maps. Here is a brief description of each method:
 
+### getRandom( T[] ) or getRandom( List\<T\> )
+Returns random object from list. null if list is empty
+```java
+String[] strings = new String[]{"one", "two", "three"};
+String random = ArrayUtils.getRandom(strings);
+```
+```java
+ArrayList<String> strings = ArrayUtils.toArrayList("one", "two", "three");
+String random = ArrayUtils.getRandom(strings);
+```
+
+
 ### createMap(Object... values)
 This method allows for the easy creation of maps by accepting arguments in the form of key-value pairs. It takes any number of arguments, where every even argument is a `String`  key and every odd argument is the corresponding value of any `Object` type. It then creates a `HashMap` with those key-value pairs and returns it. Here is an example of how to use this method:
 ```java
