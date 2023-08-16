@@ -382,12 +382,12 @@ public class Vector2d {
      */
     public double getAngle(Vector2d to) {
         double dx = to.x - x;
-        // Minus to correct for coord re-mapping
+        // Minus to correct for cord re-mapping
         double dy = -(to.y - y);
 
         double inRads = Math.atan2(dy, dx);
 
-        // We need to map to coord system when 0 degree is at 3 O'clock, 270 at 12 O'clock
+        // We need to map to cord system when 0 degree is at 3 O'clock, 270 at 12 O'clock
         if (inRads < 0)
             inRads = Math.abs(inRads);
         else

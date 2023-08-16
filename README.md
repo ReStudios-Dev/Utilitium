@@ -237,10 +237,31 @@ This class provides various utility methods for mathematical calculations.
 - `characterUp(int index, String s)` - Sets the character at a specified index to upper case.
 - `charsUp(String s, int... ints)` - Sets all characters at specified indexes to upper case.
 - `md5(String str)` - Encodes a string using the MD5 algorithm.
-- `RGBToANSIForeground(int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI foreground color escape code that can be used to output colored text to console using System.out. The arguments r, g, and b represent the red, green, and blue color components of the RGB color, respectively.
-- `RGBToANSIBackground(int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI background color escape code that can be used to output colored text to console using System.out. The arguments r, g, and b represent the red, green, and blue color components of the RGB color, respectively.
-- `RGBToANSI(boolean foreground, int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI color escape code that can be used to output colored text to console using System.out. The foreground argument specifies whether the color should be used as foreground (text color) or background color. The r, g, and b arguments represent the red, green, and blue color components of the RGB color, respectively.
 - `firstCharUp(String s)` - Sets the first character of a string to upper case.
+
+
+---
+## Colorizium
+Only works where [ANSI escape codes](https://en.wikipedia.org/wiki/ANSI_escape_code) are supported
+- `apply(String input, String prefix, AColorProvider|null provider, String suffix)` - Apply color provider to string and return it
+- `reset()` - Resets any color and style for characters next
+- `bold()` - Make characters further bold
+- `italic()` - Make characters further italic 
+- `underline()` - Make characters further underline 
+- `strikethrough()` - Make characters further strikethrough 
+- `framed()` - Make characters further framed 
+- `rgb(int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI foreground color escape code that can be used to output colored text to console using System.out. The arguments r, g, and b represent the red, green, and blue color components of the RGB color, respectively.
+- `bg_rgb(int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI background color escape code that can be used to output colored text to console using System.out. The arguments r, g, and b represent the red, green, and blue color components of the RGB color, respectively.
+- `rgb(boolean foreground, int r, int g, int b)` - This method converts an RGB color (24-bit) to an ANSI color escape code that can be used to output colored text to console using System.out. The foreground argument specifies whether the color should be used as foreground (text color) or background color. The r, g, and b arguments represent the red, green, and blue color components of the RGB color, respectively.
+
+Static classes to work with ColorProvider (Read the javadoc for more information):
+- `abstract class AColorProvider`
+- `enum Style`
+- `astract class Line`
+- `class ResetLine extends Line`
+- `class ColorLine extends Line`
+- `class StyleLine extends Line`
+- `class ColorProvider extends AColorProvider`
 
 ---
 ## ThreadBuilder

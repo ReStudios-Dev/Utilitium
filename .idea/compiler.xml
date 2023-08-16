@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="UtilitiumGit" />
+        <module name="Utilitium" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">

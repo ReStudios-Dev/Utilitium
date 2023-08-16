@@ -128,57 +128,7 @@ public class StringUtils {
         return s;
     }
 
-    /**
-     * RGB to ANSI FOREGROUND color (24 bit)
-     *
-     * You can use it to output colored text to console using System.out
-     * Example: System.out.println( RGBToANSIForeground(255, 0, 0) + "this is red text" );
-     *
-     * @param r red color (0-255)
-     * @param g green color (0-255)
-     * @param b blue color (0-255)
-     * @return ANSI color escape code
-     */
-    public static String RGBToANSIForeground(int r, int g, int b){
-        return RGBToANSI(true, r, g, b);
-    }
 
-    /**
-     * RGB to ANSI BACKGROUND color (24 bit)
-     *
-     * You can use it to output colored text to console using System.out
-     * Example: System.out.println( RGBToANSIBackground(255, 0, 0) + "this is text with red background" );
-     *
-     * @param r red color (0-255)
-     * @param g green color (0-255)
-     * @param b blue color (0-255)
-     * @return ANSI color escape code
-     */
-    public static String RGBToANSIBackground(int r, int g, int b){
-        return RGBToANSI(false, r, g, b);
-    }
-
-    /**
-     * RGB to ANSI color (24 bit)
-     *
-     * You can use it to output colored text to console using System.out
-     * Example: System.out.println( RGBToANSI(0, 255, 0) + "this is green text" );
-     *
-     * @param foreground is foreground (text color or background color)
-     * @param r red color (0-255)
-     * @param g green color (0-255)
-     * @param b blue color (0-255)
-     * @return ANSI color escape code
-     */
-    public static String RGBToANSI(boolean foreground, int r, int g, int b){
-        r = MathUtils.clamp(0, 255, r);
-        g = MathUtils.clamp(0, 255, g);
-        b = MathUtils.clamp(0, 255, b);
-        return "\u001B["+(foreground?"3":"4")+"8;2;R;G;Bm"
-                .replace("R", r+"")
-                .replace("B", ""+b)
-                .replace("G", g+"");
-    }
 
     /**
      * Encodes string using MD5 algorithm
