@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 @SuppressWarnings("unused")
 public class InstanceManager {
+
     /**
      * Instance list
      */
@@ -14,8 +15,8 @@ public class InstanceManager {
      * @param instance Instance to register
      */
     public static void register(Object instance){
-        if(instances.contains(instance)){
-            throw new RuntimeException("Instance already exists");
+        if (hasInstance(instance.getClass())) {
+            instances.removeIf(o -> instance.getClass().isAssignableFrom(o.getClass()));
         }
         instances.add(instance);
     }
@@ -29,6 +30,10 @@ public class InstanceManager {
     @SuppressWarnings("unchecked")
     public static <T> T getInstance(final Class<T> clazz){
         return (T) instances.stream().filter(o -> clazz.isAssignableFrom(o.getClass())).findFirst().orElse(null);
+    }
+
+    public static boolean hasInstance(final Class<?> clazz){
+        return instances.stream().anyMatch(o -> clazz.isAssignableFrom(o.getClass()));
     }
 
     static  {

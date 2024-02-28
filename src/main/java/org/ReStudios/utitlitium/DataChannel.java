@@ -117,9 +117,9 @@ public class DataChannel implements Closeable, Flushable {
      * @throws IOException if an I/O error occurs
      */
     public void transfer() throws IOException {
-        byte[] buf = new byte[1024*32];
+        byte[] buf = new byte[4096];
         int length;
-        while ((length = getInputStream().read(buf)) != -1) {
+        while ((length = getInputStream().read(buf)) > 0) {
             getOutputStream().write(buf, 0, length);
         }
     }

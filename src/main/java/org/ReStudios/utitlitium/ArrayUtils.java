@@ -73,7 +73,7 @@ public class ArrayUtils {
      * @param <T> type
      */
     public static <T> T getRandom(List<T> list){
-        if(list.size() == 0)return null;
+        if(list.isEmpty())return null;
         Random random = new Random();
         return list.get(random.nextInt(list.size()));
     }
@@ -115,10 +115,15 @@ public class ArrayUtils {
      * @param <T> List type
      */
     public static <T> T getLastItem(T[] s) {
+        if(s.length == 0)return null;
         return s[s.length - 1];
     }
+    public static <T> T getLastItem(List<T> s) {
+        if(s.isEmpty())return null;
+        return s.get(s.size()-1);
+    }
 
-    enum ComparingMode {
+    public enum ComparingMode {
         EQUALITY, CLASS, HASH_CODE
     }
 }

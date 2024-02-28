@@ -189,6 +189,37 @@ public class MyApp {
 }
 ```
 
+
+### NFile
+The `NFile` class extends the File class and provides additional utility methods for file manipulation. It inherits constructors from the File class and overrides several methods to return instances of NFile instead of File. Below are the key features and methods of the NFile class:
+
+Constructors
+- `NFile(String pathname)`: Constructs a new NFile instance by converting the given pathname string into an abstract pathname.
+- `NFile(String parent, String child)`: Constructs a new NFile instance from a parent pathname string and a child pathname string.
+- `NFile(File parent, String child)`: Constructs a new NFile instance from a parent abstract pathname and a child pathname string.
+- `NFile(URI uri)`: Constructs a new NFile instance from a file: URI.
+  Methods
+- `getParentFile()`: Returns the parent of this abstract pathname as an NFile.
+- `getAbsoluteFile()`: Returns an NFile object that represents the absolute pathname of this abstract pathname.
+- `getCanonicalFile()`: Returns an NFile object that represents the canonical form of this abstract pathname.
+- `listFiles(FilenameFilter filter)`: Returns an array of NFile objects representing the files and directories in the directory represented by this abstract pathname that satisfy the specified filter.
+- `listFiles()`: Returns an array of NFile objects representing the files and directories in the directory represented by this abstract pathname.
+- `listFiles(FileFilter filter)`: Returns an array of NFile objects representing the files and directories in the directory represented by this abstract pathname that satisfy the specified filter.
+- `readBytes()`: Reads all bytes from this file and returns them as a byte array.
+- `readString(Charset charset)`: Reads all characters from this file using the specified charset and returns the result as a string.
+- `readString()`: Reads all characters from this file using the default charset and returns the result as a string.
+- `write(byte[] bytes, int offset, int length)`: Writes length bytes from the specified byte array starting at the specified offset to this file.
+- `write(byte[] bytes)`: Writes all bytes from the specified byte array to this file.
+- `write(String str, Charset charset)`: Writes the specified string to this file using the specified charset.
+- `write(String str)`: Writes the specified string to this file using the default charset.
+- `openOutput()`: Opens a FileOutputStream for writing to this file.
+- `child(String child)`: Creates a new NFile instance representing the child of this file with the given child pathname string.
+  Static Methods
+- `fileArrayToNFile(File[] files)`: Converts an array of File objects to an array of NFile objects.
+  This class provides convenient methods for file I/O operations and facilitates working with file paths and contents in Java applications.
+
+
+
 ---
 ## Logger
 The `Logger` class is a subclass of `PrintStream` and `Thread.UncaughtExceptionHandler`. It provides a simple way to log information to the console with additional metadata such as the name of the current thread and the class and line number where the log statement was called. It also supports logging of uncaught exceptions.
@@ -293,23 +324,33 @@ In this example, we created a new thread that will execute the task. We used the
 
 The code of the `ThreadBuilder` class allows us to easily create and configure threads without resorting to additional lines of code for each thread. We can use the `build()` method to create a thread with the specified parameters or the `buildAndRun()` method to create and start the thread in one method. Additionally, we can use the `setName()`, `setPriority()`, and `setHandler()` methods to configure the thread's name, priority, and exception handler, respectively.
 
----
-## Timer
-The `Timer` class is a simple Java class that provides basic timing functionality. The class contains a `startTime` field, which stores the time at which the timer is started, and a boolean field named `running`, which indicates whether the timer is currently running or not. The Timer class provides four methods: `run()`, `getTime()`, `running()`, and `stop()`.
+### `Timer`
+The `Timer` class provides functionality to measure elapsed time and record steps during execution. It includes methods for starting the timer, recording steps, and calculating the total elapsed time. Additionally, it contains a nested class StepData to represent data for each step.
 
-The `run()` method starts the timer by setting the startTime field to the current system time. The `getTime()` method returns the time elapsed since the timer was started by subtracting the start time from the current system time. The `stop()` method stops the timer and returns the total elapsed time in milliseconds.
-
-The goal of this class is to provide a simple way to measure the time taken by a program or a specific operation within a program. This can be useful for profiling and optimizing code, as well as for measuring the performance of different algorithms.
-
-Example usage:
-```java
-Timer timer = new Timer();
-timer.run();
-// Run some code here
-long elapsedTime = timer.stop();
-System.out.println("Elapsed time: " + elapsedTime + " ms");
-```
-This will create a new `Timer` object, start the timer using the `run()` method, run some code, stop the timer using the `stop()` method, and print the elapsed time in milliseconds.
+Fields
+- `long startTime`: Holds the start time of the timer.
+- `ArrayList<StepData>` steps: Stores the recorded steps during execution.
+  Constructors
+- `Timer()`: Initializes the timer with a start time of 0 and an empty list of steps.
+  Methods
+- `run()`: Starts the timer by setting the start time to the current system time.
+- `step()`: Records a step by creating a StepData instance with the start time, previous step's finish time (if available), and current time. Adds the StepData instance to the list of steps and returns it.
+- `total()`: Calculates and returns the total elapsed time since the timer started.
+#### Nested Class `StepData`
+Fields
+- `long startTime`: Holds the start time of the step.
+- `long stepBefore`: Holds the finish time of the previous step.
+- `long finishTime`: Holds the finish time of the current step.
+  Constructors
+- `StepData(long startTime, long stepBefore, long finishTime)`: Initializes a StepData instance with the given start time, previous step's finish time, and finish time.
+  Methods
+- `relative()`: Calculates and returns the relative time taken for the step.
+- `absolute()`: Calculates and returns the absolute time taken for the step.
+  Overrides
+- `equals(Object o)`: Checks if two StepData instances are equal based on their start time, previous step's finish time, and finish time.
+- `hashCode()`: Generates a hash code for the StepData instance based on its fields.
+- `toString()`: Returns a string representation of the StepData instance showing the relative and absolute times.
+This class facilitates timing and step recording in Java applications, providing useful functionality for performance analysis and debugging.
 
 ---
 ## TrayUtils
@@ -355,11 +396,3 @@ System.out.println(caller.getClassName()); // prints the class name of the calle
 
 ### safeEquals(Object a, Object b)
 This method performs a safe comparison of two objects using the `equals` method. It takes two arguments, `a` and `b`, the objects to compare. If both objects are `null`, it returns `true`. If only one of the objects is `null`, it returns `false`. Otherwise, it returns the result of the `equals` method called on `a`.
-
----
-## WarnFunctions
-Functions whose functionality works, but the desired result MAYBE not be the desired one
-
-### getTTSAudioFile(String text, String language)
-Get Text-to-speech audio data using Google Translator.
-Language in format `ISO 639-1` ('ru', 'en', 'de', etc.).

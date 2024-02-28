@@ -4,6 +4,33 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 @SuppressWarnings("unused")
 public class StringUtils {
+    /**
+     * Check is string float
+     * @param s Potential float string
+     * @return true if string is float
+     */
+    public static boolean isFloat(String s){
+        try {
+            Float.parseFloat(s);
+            return true;
+        }catch (NumberFormatException ignored){
+            return false;
+        }
+    }
+
+    /**
+     * Check is string int
+     * @param s Potential integer string
+     * @return true if string is integer
+     */
+    public static boolean isInteger(String s){
+        try {
+            Integer.parseInt(s);
+            return true;
+        }catch (NumberFormatException ignored){
+            return false;
+        }
+    }
 
     /**
      * Safe integer parse
@@ -13,7 +40,7 @@ public class StringUtils {
     public static int parseInteger(String s) {
         try {
             return Integer.parseInt(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return 0;
         }
     }
@@ -26,7 +53,7 @@ public class StringUtils {
     public static double parseDouble(String s) {
         try {
             return Double.parseDouble(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return 0.0;
         }
     }
@@ -39,7 +66,7 @@ public class StringUtils {
     public static float parseFloat(String s) {
         try {
             return Float.parseFloat(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return 0.0F;
         }
     }
@@ -53,7 +80,7 @@ public class StringUtils {
     public static int parseInteger(String s, int defaultValue) {
         try {
             return Integer.parseInt(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return defaultValue;
         }
     }
@@ -67,7 +94,7 @@ public class StringUtils {
     public static double parseDouble(String s, double defaultValue) {
         try {
             return Double.parseDouble(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return defaultValue;
         }
     }
@@ -81,7 +108,7 @@ public class StringUtils {
     public static float parseFloat(String s, float defaultValue) {
         try {
             return Float.parseFloat(s);
-        } catch (NumberFormatException var2) {
+        } catch (NumberFormatException ignored) {
             return defaultValue;
         }
     }

@@ -182,7 +182,7 @@ public class Colorizium {
      * You can extend it to customize the color scheme
      * </p>
      */
-    static abstract class AColorProvider {
+    public static abstract class AColorProvider {
 
         /**
          * Get list of color lines.
@@ -195,7 +195,7 @@ public class Colorizium {
     /**
      * Style enum
      */
-    enum Style {
+    public enum Style {
         BOLD, ITALIC, UNDERLINE, STRIKETHROUGH, FRAMED
     }
 
@@ -208,7 +208,7 @@ public class Colorizium {
      * StyleLine - for style like bold, italic etc (contain only Style enum)
      * </p>
      */
-    static abstract class Line {
+    public static abstract class Line {
         /**
          * Selector.
          * For example selector "red" for prefix "&" and suffix "", will replace "&red" with special value
@@ -223,7 +223,7 @@ public class Colorizium {
     /**
      * Reset all colors and styles. Text after this line will be default (usually plain white)
      */
-    static class ResetLine extends Line {
+    public static class ResetLine extends Line {
         public ResetLine(String string) {
             super(string);
         }
@@ -232,7 +232,7 @@ public class Colorizium {
     /**
      * Make all next characters with special color of foreground or background
      */
-    static class ColorLine extends Line{
+    public static class ColorLine extends Line{
         public final boolean foreground;
         public final Color color;
 
@@ -246,7 +246,7 @@ public class Colorizium {
     /**
      * Make all next characters with special style: bold, italic, underline, strikethrough or framed
      */
-    static class StyleLine extends Line {
+    public static class StyleLine extends Line {
         public final Style style;
 
         public StyleLine(String string, Style style) {
@@ -258,7 +258,7 @@ public class Colorizium {
     /**
      * Color provider. Contain pairs of selectors and lines (replacement for selector)
      */
-    static class ColorProvider extends AColorProvider{
+    public static class ColorProvider extends AColorProvider{
         private final ArrayList<Line> colors;
 
         /**
