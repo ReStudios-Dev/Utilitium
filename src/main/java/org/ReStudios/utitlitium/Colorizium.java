@@ -4,7 +4,9 @@ import java.awt.*;
 import java.util.ArrayList;
 
 @SuppressWarnings("unused")
-public class Colorizium {
+public final class Colorizium {
+
+    private Colorizium(){}
 
     /**
      * Apply color provider to string and return it

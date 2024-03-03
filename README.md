@@ -37,6 +37,12 @@ ArrayList<String> strings = ArrayUtils.toArrayList("one", "two", "three");
 String random = ArrayUtils.getRandom(strings);
 ```
 
+### addLimited(List<T> list, int limit, T value)
+Adds a value to a list while limiting the list's size.
+```java
+ArrayList<String> strings = ArrayUtils.toArrayList("one", "two");
+ArrayUtils.addLimited(strings, 2, "three"); // There will only be "two" and "three"
+```
 
 ### createMap(Object... values)
 This method allows for the easy creation of maps by accepting arguments in the form of key-value pairs. It takes any number of arguments, where every even argument is a `String`  key and every odd argument is the corresponding value of any `Object` type. It then creates a `HashMap` with those key-value pairs and returns it. Here is an example of how to use this method:
@@ -255,6 +261,9 @@ This class provides various utility methods for mathematical calculations.
 - `map()` - Maps a value from one range to another range.
 - `getPositionFromDistanceRotation()` - Calculates the position of a point in a given distance and direction from a starting point.
 - `getAverageValue()` - Calculates the average value of a list of float values.
+- `factorial()` - Get the factorial of a number.
+- `C()` - Function for calculating the binomial coefficient C(n, r).
+- `getBezierPoint()` - Function to calculate a point on a Bézier curve.
 
 ---
 ## StringUtils
@@ -396,3 +405,32 @@ System.out.println(caller.getClassName()); // prints the class name of the calle
 
 ### safeEquals(Object a, Object b)
 This method performs a safe comparison of two objects using the `equals` method. It takes two arguments, `a` and `b`, the objects to compare. If both objects are `null`, it returns `true`. If only one of the objects is `null`, it returns `false`. Otherwise, it returns the result of the `equals` method called on `a`.
+
+---
+
+## FPSCalculator Class
+
+#### currentFPS()
+Get the current frames per second.
+
+#### averageFPS()
+Get the average frames per second from the history.
+
+#### updateFPS()
+Update the FPS calculation.
+
+<br>
+
+#### Example
+```java
+public class MyRenderer {
+  private FPSCalculator fpsCalculator;
+
+  public void onRender(){
+    // do render
+    fpsCalculator.updateFPS();
+
+    int fps = fpsCalculator.averageFPS();
+  }
+}
+```

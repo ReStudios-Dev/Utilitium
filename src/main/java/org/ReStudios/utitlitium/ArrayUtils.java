@@ -1,6 +1,11 @@
 package org.ReStudios.utitlitium;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Random;
 
 @SuppressWarnings("unused")
 public class ArrayUtils {
@@ -121,6 +126,24 @@ public class ArrayUtils {
     public static <T> T getLastItem(List<T> s) {
         if(s.isEmpty())return null;
         return s.get(s.size()-1);
+    }
+
+    /**
+     * Adds a value to a list while limiting the list's size.
+     *
+     * @param <T>    the type of elements in the list
+     * @param list   the list to which the value will be added
+     * @param limit  the maximum size limit of the list
+     * @param value  the value to be added to the list
+     */
+    public static <T> void addLimited(List<T> list, int limit, T value) {
+        if(limit < 1){
+            return;
+        }
+        list.add(value);
+        while (list.size() > limit){
+            list.remove(0);
+        }
     }
 
     public enum ComparingMode {

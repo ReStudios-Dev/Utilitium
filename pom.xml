@@ -2,16 +2,42 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>ru.ReStudios</groupId>
+    <groupId>io.github.restudios_dev</groupId>
     <artifactId>Utilitium</artifactId>
-    <version>1.0.4</version>
+    <version>1.0.5</version>
     <packaging>jar</packaging>
+
+    <description>Useful general library</description>
     <name>Utilitium</name>
+    <url>http://github.com/ReStudios-Dev/Utilitium</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
+        <github.global.server>github</github.global.server>
     </properties>
 
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <connection>scm:git:git://github.com/ReStudios-Dev/Utilitium.git</connection>
+        <developerConnection>scm:git:ssh://github.com:ReStudios-Dev/Utilitium.git</developerConnection>
+        <url>http://github.com/ReStudios-Dev/Utilitium/tree/main</url>
+    </scm>
+
+    <developers>
+        <developer>
+            <name>Sasha Interesnyy</name>
+            <email>swimer.minecraft@gmail.com</email>
+            <organization>ReStudios</organization>
+            <organizationUrl>https://discord.gg/B4vB584UBg</organizationUrl>
+        </developer>
+    </developers>
 </project>

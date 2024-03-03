@@ -12,7 +12,7 @@ public class Vector3d {
     /**
      * X, Y & Z values
      */
-    double x, y, z;
+    public double x, y, z;
 
     /**
      * Constructor default values
@@ -398,5 +398,7 @@ public class Vector3d {
         return new Vector3d(StringUtils.parseDouble(x), StringUtils.parseDouble(y), StringUtils.parseDouble(z));
     }
 
-
+    public Vector3 asVector3(){
+        return new Vector3((int) Math.round(x), (int) Math.round(y), (int) Math.round(z));
+    }
 }

@@ -12,7 +12,7 @@ public class Vector3f {
     /**
      * X, Y & Z values
      */
-    float x, y, z;
+    public float x, y, z;
 
     /**
      * Constructor default values
@@ -398,5 +398,7 @@ public class Vector3f {
         return new Vector3f(StringUtils.parseFloat(x), StringUtils.parseFloat(y), StringUtils.parseFloat(z));
     }
 
-
+    public Vector3 asVector3(){
+        return new Vector3(Math.round(x), Math.round(y), Math.round(z));
+    }
 }

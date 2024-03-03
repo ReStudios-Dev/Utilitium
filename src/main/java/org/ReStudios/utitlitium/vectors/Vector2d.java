@@ -14,7 +14,7 @@ public class Vector2d {
     /**
      * X & Y values
      */
-    double x, y;
+    public double x, y;
 
     /**
      * Constructor default values
@@ -396,4 +396,7 @@ public class Vector2d {
         return Math.toDegrees(inRads);
     }
 
+    public Vector2 asVector2(){
+        return new Vector2((int) Math.round(x), (int) Math.round(y));
+    }
 }

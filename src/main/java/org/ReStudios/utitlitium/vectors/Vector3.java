@@ -12,7 +12,7 @@ public class Vector3 {
     /**
      * X, Y & Z values
      */
-    int x, y, z;
+    public int x, y, z;
 
     /**
      * Constructor default values

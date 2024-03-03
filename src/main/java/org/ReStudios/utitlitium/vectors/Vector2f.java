@@ -14,7 +14,7 @@ public class Vector2f {
     /**
      * X & Y values
      */
-    float x, y;
+    public float x, y;
 
     /**
      * Constructor default values
@@ -395,5 +395,9 @@ public class Vector2f {
             inRads = 2 * Math.PI - inRads;
 
         return Math.toDegrees(inRads);
+    }
+
+    public Vector2 asVector2(){
+        return new Vector2(Math.round(x), Math.round(y));
     }
 }

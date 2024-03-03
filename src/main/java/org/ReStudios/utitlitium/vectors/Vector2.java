@@ -14,7 +14,7 @@ public class Vector2 {
     /**
      * X & Y values
      */
-    int x, y;
+    public int x, y;
 
     /**
      * Constructor default values

@@ -2,7 +2,7 @@
   <artifact type="jar" name="Utilitium">
     <output-path>$PROJECT_DIR$/out/artifacts/Utilitium</output-path>
     <root id="archive" name="Utilitium.jar">
-      <element id="module-output" name="UtilitiumGit" />
-      </root>
+      <element id="module-output" name="Utilitium" />
+    </root>
   </artifact>
 </component>

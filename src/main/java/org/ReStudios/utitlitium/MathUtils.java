@@ -1,5 +1,6 @@
 package org.ReStudios.utitlitium;
 
+import org.ReStudios.utitlitium.vectors.Vector2d;
 import org.ReStudios.utitlitium.vectors.Vector2f;
 
 import java.util.Collection;
@@ -92,5 +93,43 @@ public class MathUtils {
         return sum/floatValues.size();
     }
 
+    /**
+     * Get the factorial of a number
+     * @param x Input
+     * @return Factorial
+     */
+    public static int factorial(int x) {
+        int result = 1;
+        for (int i = 2; i <= x; i++) {
+            result *= i;
+        }
+        return result;
+    }
 
+    /**
+     * Function for calculating the binomial coefficient C(n, r)
+     * @param n r
+     * @param r r
+     * @return Binomial coefficient C(n, r)
+     */
+    public static int C(int n, int r) {
+        return factorial(n) / (factorial(r) * factorial(n - r));
+    }
+
+    /**
+     * Function to calculate a point on a Bezier curve
+     * <a href="https://en.wikipedia.org/wiki/B%C3%A9zier_curve">Bézier curve</a>
+     * @param points Points
+     * @param t Current time (0.0 - 1.0)
+     * @return Current point
+     */
+    public static Vector2d getBezierPoint(Vector2d[] points, double t) {
+        Vector2d retPos = new Vector2d(0, 0);
+        int n = points.length - 1;
+        for (int i = 0; i <= n; i++) {
+            retPos.add(Math.pow(1 - t, i) * Math.pow(t, n - i) * points[i].x() * C(n, i),
+                    Math.pow(1 - t, i) * Math.pow(t, n - i) * points[i].y() * C(n, i));
+        }
+        return retPos;
+    }
 }
