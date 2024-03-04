@@ -46,7 +46,7 @@ public class MathUtils {
    
 
     /**
-     * Cast int in range to some range (from <a href="https://www.arduino.cc/reference/en/language/functions/math/map">arduino</a>)
+     * Cast number in range to some range (from <a href="https://www.arduino.cc/reference/en/language/functions/math/map">arduino</a>)
      * @param x current value
      * @param in_min input min
      * @param in_max input max

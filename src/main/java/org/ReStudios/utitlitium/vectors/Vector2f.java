@@ -400,4 +400,19 @@ public class Vector2f {
     public Vector2 asVector2(){
         return new Vector2(Math.round(x), Math.round(y));
     }
+
+    /**
+     * This function takes a set of XY coordinates, a distance and a rotation argument.
+     * It returns XY coordinates of the point that is the given distance away
+     * from the given point, in the given direction.
+     * @param distance Distance to output position
+     * @param angle direction to output position
+     * @return Instance of vector
+     */
+    public Vector2f getPositionFromDistanceRotation(float distance, float angle){
+        float a = (float) Math.toRadians(90 - angle);
+        float dx = (float) (Math.cos(a) * distance);
+        float dy = (float) (Math.sin(a) * distance);
+        return new Vector2f(x+dx, y+dy);
+    }
 }
