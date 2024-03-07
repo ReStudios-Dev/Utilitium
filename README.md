@@ -434,3 +434,74 @@ public class MyRenderer {
   }
 }
 ```
+
+---
+
+## BundleManager
+
+BundleManager is a utility class designed to facilitate the management of resources within a Java application, particularly when dealing with bundled resources, whether inside a JAR file or within a directory structure.
+
+### Features
+
+- **Resource Extraction**: Extract files or directories from a bundled resource to a specified destination.
+- **Resource Retrieval**: Retrieve files and directories from a specified directory within the bundled resources.
+- **Reading Files**: Read the contents of a file within the bundled resources.
+- **Checking Existence**: Check for the existence of a file or directory within the bundled resources.
+
+### Usage
+
+#### Initialization
+
+```java
+BundleManager manager = new BundleManager();
+```
+
+#### Extraction
+
+Extract a directory or file from the bundled resources to a specified destination.
+
+```java
+manager.extract("sourceDir", new NFile("destinationDir"), true);
+```
+
+- `sourceDir`: Path of the directory or file to extract from the bundled resources.
+- `destinationDir`: Destination directory to extract the resources.
+- `true`: If `true`, maintains the directory structure; if `false`, extracts files directly into the destination directory.
+
+#### Retrieval
+
+Retrieve files and directories from a specified directory within the bundled resources.
+
+```java
+List<String> files = manager.getFiles("sourceDir");
+```
+
+- `sourceDir`: Directory from which to retrieve files.
+
+#### Reading
+
+Read the contents of a file within the bundled resources.
+
+```java
+String content = manager.readFile("sourceDir/file.txt");
+```
+
+- `sourceDir/file.txt`: Path of the file to read within the bundled resources.
+ 
+### Example
+
+```java
+public static void main(String[] args) throws IOException {
+    // Initialization
+    BundleManager manager = new BundleManager();
+    
+    // Extraction
+    manager.extract("dir", new NFile("/"), true);
+    
+    // Get files in directory
+    List<String> files = manager.getFiles("dir");
+    
+    // Reading 
+    String content = manager.readFile("dir/file.txt");
+}
+```
