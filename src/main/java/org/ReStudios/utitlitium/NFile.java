@@ -7,6 +7,8 @@ import java.net.URI;
 import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.StandardOpenOption;
+import java.util.ArrayList;
+import java.util.List;
 
 @SuppressWarnings("unused")
 public class NFile extends File {
@@ -88,6 +90,9 @@ public class NFile extends File {
     public FileOutputStream openOutput() throws FileNotFoundException {
         return new FileOutputStream(this);
     }
+    public InputStream openInput() throws FileNotFoundException {
+        return new FileInputStream(this);
+    }
 
     public static NFile[] fileArrayToNFile(File[] files){
         if(files == null) return new NFile[0];
@@ -124,4 +129,34 @@ public class NFile extends File {
         }
         return ArrayUtils.getLastItem(getName().split("\\."));
     }
+    public List<NFile> allFiles(){
+        return allFiles(false);
+    }
+    public List<NFile> allFiles(boolean includeDirectories) {
+        NFile[] files = listFiles();
+        if(files == null || files.length == 0) return new ArrayList<>();
+        ArrayList<NFile> result = new ArrayList<>();
+        for (NFile file : files) {
+            if(file.isFile()) {
+                result.add(file);
+            } else {
+                result.addAll(file.allFiles(includeDirectories));
+                if (includeDirectories) {
+                    result.add(file);
+                }
+            }
+        }
+        return result;
+    }
+
+    public String relative(NFile dir) {
+        String abs = dir.getAbsolutePath();
+        String curr = getAbsolutePath();
+        if(!curr.startsWith(abs)) return curr;
+        String sub = curr.substring(abs.length());
+        if(sub.startsWith(File.separator)) sub = sub.substring(1);
+        return sub;
+    }
+
+
 }

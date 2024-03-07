@@ -21,6 +21,17 @@ public class DataChannel implements Closeable, Flushable {
         this.is = is;
     }
 
+    public static String readInputStream(InputStream is) throws IOException {
+        if(is == null) return null;
+        byte[] buff = new byte[512];
+        int len;
+        StringBuilder result = new StringBuilder();
+        while ((len = is.read(buff, 0, 512)) > 0){
+            result.append(new String(buff, 0, len));
+        }
+        return result.toString();
+    }
+
     public OutputStream getOutputStream() {
         return os;
     }
