@@ -414,4 +414,26 @@ public class Vector2d {
         double dy = (Math.sin(a) * distance);
         return new Vector2d(x+dx, y+dy);
     }
+
+    /**
+     * Get distance between 2 vectors
+     * @param vector Another vector
+     * @return Distance
+     */
+    public double distance(Vector2d vector){
+        if(vector == null) return -1;
+        double v1x = this.x;
+        double v1y = this.y;
+        double v2x = vector.x;
+        double v2y = vector.y;
+        return Math.sqrt(Math.pow((v2x - v1x), 2) + Math.pow((v2y - v1y), 2));
+    }
+
+    /**
+     * Get vector length (Distance from origin)
+     * @return Length
+     */
+    public double length(){
+        return distance(new Vector2d(0.0d, 0.0d));
+    }
 }

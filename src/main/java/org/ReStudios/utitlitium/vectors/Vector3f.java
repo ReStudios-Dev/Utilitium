@@ -401,4 +401,29 @@ public class Vector3f {
     public Vector3 asVector3(){
         return new Vector3(Math.round(x), Math.round(y), Math.round(z));
     }
+
+    /**
+     * Get distance between 2 vectors
+     * @param vector Another vector
+     * @return Distance
+     */
+    public double distance(Vector3f vector){
+        if(vector == null) return -1;
+        float v1x = this.x;
+        float v1y = this.y;
+        float v1z = this.z;
+        float v2x = vector.x;
+        float v2y = vector.y;
+        float v2z = vector.z;
+        return Math.sqrt(Math.pow(v2x - v1x, 2) + Math.pow(v2y - v1y, 2) + Math.pow(v2z - v1z, 2));
+    }
+
+    /**
+     * Get vector length (Distance from origin)
+     * @return Length
+     */
+    public double length(){
+        return distance(new Vector3f(0.0f, 0.0f, 0.0f));
+    }
+
 }

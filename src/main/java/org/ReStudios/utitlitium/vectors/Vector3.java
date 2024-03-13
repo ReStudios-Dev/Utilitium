@@ -398,5 +398,29 @@ public class Vector3 {
         return new Vector3(StringUtils.parseInteger(x), StringUtils.parseInteger(y), StringUtils.parseInteger(z));
     }
 
+    /**
+     * Get distance between 2 vectors
+     * @param vector Another vector
+     * @return Distance
+     */
+    public double distance(Vector3 vector){
+        if(vector == null) return -1;
+        int v1x = this.x;
+        int v1y = this.y;
+        int v1z = this.z;
+        int v2x = vector.x;
+        int v2y = vector.y;
+        int v2z = vector.z;
+        return Math.sqrt(Math.pow(v2x - v1x, 2) + Math.pow(v2y - v1y, 2) + Math.pow(v2z - v1z, 2));
+    }
+
+    /**
+     * Get vector length (Distance from origin)
+     * @return Length
+     */
+    public double length(){
+        return distance(new Vector3(0, 0, 0));
+    }
+
 
 }

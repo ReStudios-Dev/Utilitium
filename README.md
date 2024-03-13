@@ -20,6 +20,8 @@ The `vector.mul()` method multiplies the x and y [and z] values of the vector wi
 
 The `vector.div()` method divides the x and y [and z] values of the vector with the x and y [and z] values of the given vector or direct values, but only if the divisor is not zero.
 
+Classes also have other useful methods, like: `double length()`, `double distance(Vector*)`, `asVector2()/asVector3()`, `getPositionFromDistanceRotation(float distance, float angle)` Vector2* only
+
 All the methods return an instance of vector class to allow method chaining.
 
 ---

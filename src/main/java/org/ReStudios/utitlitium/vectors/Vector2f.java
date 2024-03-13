@@ -415,4 +415,26 @@ public class Vector2f {
         float dy = (float) (Math.sin(a) * distance);
         return new Vector2f(x+dx, y+dy);
     }
+
+    /**
+     * Get distance between 2 vectors
+     * @param vector Another vector
+     * @return Distance
+     */
+    public double distance(Vector2f vector){
+        if(vector == null) return -1;
+        float v1x = this.x;
+        float v1y = this.y;
+        float v2x = vector.x;
+        float v2y = vector.y;
+        return Math.sqrt(Math.pow((v2x - v1x), 2) + Math.pow((v2y - v1y), 2));
+    }
+
+    /**
+     * Get vector length (Distance from origin)
+     * @return Length
+     */
+    public double length(){
+        return distance(new Vector2f(0.0f, 0.0f));
+    }
 }
